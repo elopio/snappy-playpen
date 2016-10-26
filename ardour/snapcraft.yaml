@@ -1,0 +1,42 @@
+name: ardour
+version: master
+summary: Record, Edit, and Mix
+description: |
+  Ardour is a professional digital workstation for working with audio and MIDI.
+
+grade: devel
+confinement: devmode
+
+apps:
+  ardour:
+    command:  desktop-launch $SNAP/usr/local/bin/ardour5
+    plugs: [x11, unity7]
+
+parts:
+  ardour:
+    source: git://git.ardour.org/ardour/ardour.git
+    plugin: waf
+    build-packages:
+      - libarchive-dev
+      - libaubio-dev
+      - libasound2-dev
+      - liblo-dev
+      - libboost-dev
+      - libcurl4-gnutls-dev
+      - libfftw3-dev
+      - libglibmm-2.4-dev
+      - libgtkmm-2.4-dev
+      - libjack-dev
+      - liblrdf0-dev
+      - liblilv-dev
+      - librubberband-dev
+      - libsamplerate0-dev
+      - libserd-dev
+      - libsndfile1-dev
+      - libsord-dev
+      - libsratom-dev
+      - libtag1-dev
+      - libxml2-dev
+      - lv2-dev
+      - vamp-plugin-sdk
+    after: [desktop-gtk2]
